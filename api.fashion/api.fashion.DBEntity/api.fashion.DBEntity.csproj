@@ -1,0 +1,9 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <RootNamespace>api.fashion.DBEntity</RootNamespace>
+    <AssemblyName>api.fashion.DBEntity</AssemblyName>
+  </PropertyGroup>
+
+</Project>
