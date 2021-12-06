@@ -62,7 +62,7 @@ namespace API
                   options.Authority = AppSettingsProvider.config.UrlBaseIdentityServer;
                   options.RequireHttpsMetadata = false;
                   options.RefreshOnIssuerKeyNotFound = true;
-                  options.Audience = "API-APP-FASHION";
+                  options.Audience = "API-APP-UPC";
               });
 
 

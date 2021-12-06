@@ -11,6 +11,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "api.fashion.DBEntity", "api
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "api.fashion.UnitTest", "api.fashion\api.fashion.UnitTest\api.fashion.UnitTest.csproj", "{93D8111E-70E7-4FF4-A16C-7853282EE3AC}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "api.fashion.API.IS", "api.fashion\api.fashion.API.IS\api.fashion.API.IS.csproj", "{8A71E1D3-2A18-4AF9-B1E5-27AE2D7B205A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{93D8111E-70E7-4FF4-A16C-7853282EE3AC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{93D8111E-70E7-4FF4-A16C-7853282EE3AC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{93D8111E-70E7-4FF4-A16C-7853282EE3AC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8A71E1D3-2A18-4AF9-B1E5-27AE2D7B205A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8A71E1D3-2A18-4AF9-B1E5-27AE2D7B205A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8A71E1D3-2A18-4AF9-B1E5-27AE2D7B205A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8A71E1D3-2A18-4AF9-B1E5-27AE2D7B205A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

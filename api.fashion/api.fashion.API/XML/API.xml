@@ -278,10 +278,11 @@
             </summary>
             <param name="UserRepository"></param>
         </member>
-        <member name="M:api.fashion.API.Controllers.UserController.Get">
+        <member name="M:api.fashion.API.Controllers.UserController.Login(DBEntity.EntityLogin)">
             <summary>
-            GetListUser
+            
             </summary>
+            <param name="login"></param>
             <returns></returns>
         </member>
         <member name="T:api.fashion.API.Security.AccessToken">

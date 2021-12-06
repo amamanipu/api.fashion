@@ -10,6 +10,7 @@ using System.Net;
 using System.Net.Http;
 using System.Security.Claims;
 using System.Threading.Tasks;
+using api.fashion.API.Security;
 
 namespace api.fashion.API.Controllers
 {
@@ -17,7 +18,8 @@ namespace api.fashion.API.Controllers
     /// 
     /// </summary>
     [Produces("application/json")]
-    [Route("api/User")]
+    [Route("api/user")]
+    [ApiController]
     public class UserController : Controller
     {
 
@@ -38,21 +40,50 @@ namespace api.fashion.API.Controllers
         }
 
         /// <summary>
-        /// GetListUser
+        /// 
         /// </summary>
+        /// <param name="login"></param>
         /// <returns></returns>
         [Produces("application/json")]
-        [SwaggerOperation("GetListUser")]
         [AllowAnonymous]
-        [HttpGet]
-        [Route("GetListUser")]
-        public ActionResult Get()
+        [HttpPost]
+        [Route("login")]
+        public async Task<ActionResult> Login(EntityLogin login)
         {
-            var ret = _UserRepository.GetUsers();
+            var ret = _UserRepository.Login(login);
 
-            if (ret == null)
-                return StatusCode(401);
+            if (ret.data != null)
+            {
+                var responseLogin = ret.data as EntityLoginResponse;
+                var usercod = responseLogin.id_usuario.ToString();
+                var userdoc = responseLogin.documentoidentidad;
 
+                var token = JsonConvert.DeserializeObject<AccessToken>(
+                   await new Authentication().GenerateToken(userdoc, usercod)
+                ).access_token;
+
+                responseLogin.token = token;
+                ret.data = responseLogin;
+            }
+
+            return Json(ret);
+        }
+
+        [Produces("application/json")]
+        [Authorize]
+        [HttpPost]
+        [Route("insert")]
+        public ActionResult Insert(EntityUser user)
+        {
+            var identity = User.Identity as ClaimsIdentity;
+            IEnumerable<Claim> claims = identity.Claims;
+
+            var usercod = claims.Where(p => p.Type == "client_codigo_usuario").FirstOrDefault()?.Value;
+            var userdoc = claims.Where(p => p.Type == "client_numero_documento").FirstOrDefault()?.Value;
+
+            user.UsuarioCrea = int.Parse(usercod);
+
+            var ret = _UserRepository.Insert(user);
             return Json(ret);
         }
     }

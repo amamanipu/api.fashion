@@ -6,7 +6,7 @@ namespace DBEntity
 {
     public class EntityBase
     {
-        public bool Activo { get; set; }
+        public bool Estado { get; set; }
         public int UsuarioCrea { get; set; }
         public int UsuarioModifica { get; set; }
         public DateTime FechaCrea { get; set; }
