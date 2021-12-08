@@ -262,6 +262,40 @@
             <param name="app"></param>
             <param name="env"></param>
         </member>
+        <member name="T:api.fashion.API.Controllers.ProductController">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:api.fashion.API.Controllers.ProductController._ProductRepository">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:api.fashion.API.Controllers.ProductController.#ctor(DBContext.IProductRepository)">
+            <summary>
+            
+            </summary>
+            <param name="ProductRepository"></param>
+        </member>
+        <member name="M:api.fashion.API.Controllers.ProductController.GetProducts">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:api.fashion.API.Controllers.ProductController.GetProduct(System.Int32)">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:api.fashion.API.Controllers.ProductController.Insert(DBEntity.EntityProduct)">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
         <member name="T:api.fashion.API.Controllers.UserController">
             <summary>
             
@@ -283,6 +317,20 @@
             
             </summary>
             <param name="login"></param>
+            <returns></returns>
+        </member>
+        <member name="M:api.fashion.API.Controllers.UserController.Insert(DBEntity.EntityUser)">
+            <summary>
+            
+            </summary>
+            <param name="user"></param>
+            <returns></returns>
+        </member>
+        <member name="M:api.fashion.API.Controllers.UserController.GetUser(System.Int32)">
+            <summary>
+            
+            </summary>
+            <param name="id"></param>
             <returns></returns>
         </member>
         <member name="T:api.fashion.API.Security.AccessToken">

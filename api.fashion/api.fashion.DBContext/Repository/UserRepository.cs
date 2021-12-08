@@ -10,6 +10,53 @@ namespace DBContext
 {
     public class UserRepository : BaseRepository, IUserRepository
     {
+        public BaseResponse GetUsuarioById(int id)
+        {
+            var returnEntity = new BaseResponse();
+            var entityUser = new EntityUser();
+
+            try
+            {
+                using (var db = GetSqlConnection())
+                {
+                    const string sql = @"usp_ObtenerUsuario";
+
+                    var p = new DynamicParameters();
+                    p.Add("@ID_USUARIO", value: id, DbType.Int32, direction: ParameterDirection.Input);
+
+                    entityUser = db.Query<EntityUser>(
+                        sql: sql,
+                        param: p,
+                        commandType: CommandType.StoredProcedure
+                    ).FirstOrDefault();
+
+                    if (entityUser != null)
+                    {
+                        returnEntity.issuccess = true;
+                        returnEntity.errorcode = "0000";
+                        returnEntity.errormessage = string.Empty;
+                        returnEntity.data = entityUser;
+                    }
+                    else
+                    {
+                        returnEntity.issuccess = false;
+                        returnEntity.errorcode = "0000";
+                        returnEntity.errormessage = string.Empty;
+                        returnEntity.data = null;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                returnEntity.issuccess = false;
+                returnEntity.errorcode = "0001";
+                returnEntity.errormessage = ex.Message;
+                returnEntity.data = null;
+            }
+
+            return returnEntity;
+        }
+
         public BaseResponse Insert(EntityUser user)
         {
             var returnEntity = new BaseResponse();
@@ -84,7 +131,7 @@ namespace DBContext
                     const string sql = @"usp_user_login";
 
                     var p = new DynamicParameters();
-                    p.Add(name: "@EMAIL", value: login.usuario, dbType: DbType.String, direction: ParameterDirection.Input);
+                    p.Add(name: "@EMAIL", value: login.email, dbType: DbType.String, direction: ParameterDirection.Input);
                     p.Add(name: "@PASSWORD", value: login.password, dbType: DbType.String, direction: ParameterDirection.Input);
 
                     entityLoginResponse = db.Query<EntityLoginResponse>(

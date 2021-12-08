@@ -69,6 +69,11 @@ namespace api.fashion.API.Controllers
             return Json(ret);
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="user"></param>
+        /// <returns></returns>
         [Produces("application/json")]
         [Authorize]
         [HttpPost]
@@ -84,6 +89,31 @@ namespace api.fashion.API.Controllers
             user.UsuarioCrea = int.Parse(usercod);
 
             var ret = _UserRepository.Insert(user);
+            return Json(ret);
+        }
+
+        [Produces("application/json")]
+        [AllowAnonymous]
+        [HttpPost]
+        [Route("insertclient")]
+        public ActionResult InsertClient(EntityUser user)
+        {
+            var ret = _UserRepository.Insert(user);
+            return Json(ret);
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        [Produces("application/json")]
+        [Authorize]
+        [HttpGet]
+        [Route("getuser")]
+        public ActionResult GetUser(int id)
+        {
+            var ret = _UserRepository.GetUsuarioById(id);
             return Json(ret);
         }
     }
