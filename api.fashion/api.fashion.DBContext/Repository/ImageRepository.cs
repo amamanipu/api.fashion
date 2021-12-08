@@ -26,6 +26,7 @@ namespace DBContext
 
                     entitiesImage = db.Query<EntityImage>(
                         sql: sql,
+                        param: p,
                         commandType: CommandType.StoredProcedure
                     ).ToList();
 

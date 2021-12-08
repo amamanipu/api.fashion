@@ -85,5 +85,19 @@ namespace api.fashion.API.Controllers
             var ret = _ProductRepository.Insert(product);
             return Json(ret);
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        [Produces("application/json")]
+        [Authorize]
+        [HttpDelete]
+        [Route("delete")]
+        public ActionResult Delete(int id)
+        {
+            var ret = _ProductRepository.Delete(id);
+            return Json(ret);
+        }
     }
 }

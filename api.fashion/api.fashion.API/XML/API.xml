@@ -296,6 +296,12 @@
             </summary>
             <returns></returns>
         </member>
+        <member name="M:api.fashion.API.Controllers.ProductController.Delete(System.Int32)">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
         <member name="T:api.fashion.API.Controllers.UserController">
             <summary>
             

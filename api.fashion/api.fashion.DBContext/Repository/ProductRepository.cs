@@ -12,7 +12,47 @@ namespace DBContext
     {
         public BaseResponse Delete(int id)
         {
-            throw new NotImplementedException();
+            var returnEntity = new BaseResponse();
+
+            try
+            {
+                using (var db = GetSqlConnection())
+                {
+                    const string sql = @"usp_EliminarProducto";
+                    var p = new DynamicParameters();
+                    p.Add("@ID_PRODUCTO", value: id, dbType: DbType.Int32, direction: ParameterDirection.Input);
+                    
+                    db.Query<EntityProduct>(
+                        sql: sql,
+                        param: p,
+                        commandType: CommandType.StoredProcedure
+                    ).FirstOrDefault();
+
+                    if (id > 0)
+                    {
+                        returnEntity.issuccess = true;
+                        returnEntity.errorcode = "0000";
+                        returnEntity.errormessage = string.Empty;
+                        returnEntity.data = new { id = id };
+                    }
+                    else
+                    {
+                        returnEntity.issuccess = false;
+                        returnEntity.errorcode = "0000";
+                        returnEntity.errormessage = string.Empty;
+                        returnEntity.data = null;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                returnEntity.issuccess = false;
+                returnEntity.errorcode = "0001";
+                returnEntity.errormessage = ex.Message;
+                returnEntity.data = null;
+            }
+
+            return returnEntity;
         }
 
         public BaseResponse GetProductById(int id)
