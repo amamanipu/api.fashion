@@ -92,6 +92,11 @@ namespace api.fashion.API.Controllers
             return Json(ret);
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="user"></param>
+        /// <returns></returns>
         [Produces("application/json")]
         [AllowAnonymous]
         [HttpPost]
@@ -114,6 +119,19 @@ namespace api.fashion.API.Controllers
         public ActionResult GetUser(int id)
         {
             var ret = _UserRepository.GetUsuarioById(id);
+            return Json(ret);
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        [Produces("application/json")]
+        [Authorize]
+        [HttpGet]
+        [Route("getusers")]
+        public ActionResult GetUsers()
+        {
+            var ret = _UserRepository.GetUsuarios();
             return Json(ret);
         }
     }

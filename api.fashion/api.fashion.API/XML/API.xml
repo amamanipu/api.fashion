@@ -332,12 +332,24 @@
             <param name="user"></param>
             <returns></returns>
         </member>
+        <member name="M:api.fashion.API.Controllers.UserController.InsertClient(DBEntity.EntityUser)">
+            <summary>
+            
+            </summary>
+            <param name="user"></param>
+            <returns></returns>
+        </member>
         <member name="M:api.fashion.API.Controllers.UserController.GetUser(System.Int32)">
             <summary>
             
             </summary>
             <param name="id"></param>
             <returns></returns>
+        </member>
+        <member name="M:api.fashion.API.Controllers.UserController.GetUsers">
+            <summary>
+            
+            </summary>
         </member>
         <member name="T:api.fashion.API.Security.AccessToken">
             <summary>

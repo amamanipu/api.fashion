@@ -149,13 +149,14 @@ namespace API
                 c.SwaggerEndpoint($"{AppSettingsProvider.config.Version}/swagger.json", $"{AppSettingsProvider.config.ApplicationName}");
             });
 
-            app.UseCors(builder => builder
-                         .AllowAnyOrigin()
-                         .AllowAnyMethod()
-                         .AllowAnyHeader());
-
             app.UseHttpsRedirection();
             app.UseRouting();
+
+            app.UseCors(x => x
+                .AllowAnyMethod()
+                .AllowAnyHeader()
+                .SetIsOriginAllowed(origin => true) // allow any origin
+                .AllowCredentials()); // allow credentials
 
             app.UseAuthentication();
             app.UseAuthorization();

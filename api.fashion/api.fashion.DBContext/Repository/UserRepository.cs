@@ -57,6 +57,49 @@ namespace DBContext
             return returnEntity;
         }
 
+        public BaseResponse GetUsuarios()
+        {
+            var returnEntity = new BaseResponse();
+            var entitiesUser = new List<EntityUser>();
+
+            try
+            {
+                using (var db = GetSqlConnection())
+                {
+                    const string sql = @"usp_ListarUsuarios";
+
+                    entitiesUser = db.Query<EntityUser>(
+                        sql: sql,
+                        commandType: CommandType.StoredProcedure
+                    ).ToList();
+
+                    if (entitiesUser.Count > 0)
+                    {
+                        returnEntity.issuccess = true;
+                        returnEntity.errorcode = "0000";
+                        returnEntity.errormessage = string.Empty;
+                        returnEntity.data = entitiesUser;
+                    }
+                    else
+                    {
+                        returnEntity.issuccess = false;
+                        returnEntity.errorcode = "0000";
+                        returnEntity.errormessage = string.Empty;
+                        returnEntity.data = null;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                returnEntity.issuccess = false;
+                returnEntity.errorcode = "0001";
+                returnEntity.errormessage = ex.Message;
+                returnEntity.data = null;
+            }
+
+            return returnEntity;
+        }
+
         public BaseResponse Insert(EntityUser user)
         {
             var returnEntity = new BaseResponse();

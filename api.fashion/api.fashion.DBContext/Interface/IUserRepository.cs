@@ -10,5 +10,6 @@ namespace DBContext
         BaseResponse Login(EntityLogin login);
         BaseResponse Insert(EntityUser user);
         BaseResponse GetUsuarioById(int id);
+        BaseResponse GetUsuarios();
     }
 }
