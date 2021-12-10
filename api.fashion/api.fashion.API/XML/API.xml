@@ -262,6 +262,28 @@
             <param name="app"></param>
             <param name="env"></param>
         </member>
+        <member name="T:api.fashion.API.Controllers.ContactController">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:api.fashion.API.Controllers.ContactController._ContactRepository">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:api.fashion.API.Controllers.ContactController.#ctor(DBContext.IContactRepository)">
+            <summary>
+            
+            </summary>
+            <param name="ContactRepository"></param>
+        </member>
+        <member name="M:api.fashion.API.Controllers.ContactController.Insert(DBEntity.EntityContact)">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
         <member name="T:api.fashion.API.Controllers.ProductController">
             <summary>
             
