@@ -284,6 +284,23 @@
             </summary>
             <returns></returns>
         </member>
+        <member name="T:api.fashion.API.Controllers.FileController">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:api.fashion.API.Controllers.FileController.#ctor">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:api.fashion.API.Controllers.FileController.upload(Microsoft.AspNetCore.Http.IFormFile)">
+            <summary>
+            
+            </summary>
+            <param name="file"></param>
+            <returns></returns>
+        </member>
         <member name="T:api.fashion.API.Controllers.ProductController">
             <summary>
             
