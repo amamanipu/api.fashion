@@ -31,7 +31,8 @@ namespace api.fashion.API.Controllers
         /// </summary>
         public FileController()
         {
-            this.basePath = "C:\\Fashion21\\productos";
+            //this.basePath = "C:\\Fashion21\\productos";
+            this.basePath = "Resources";
         }
 
         /// <summary>
@@ -52,17 +53,20 @@ namespace api.fashion.API.Controllers
             }
 
             //C:\\ArchivosPrueba\uploads
-            var uploadPath = Path.Combine(basePath, "uploads");
+            var uploadPath = Path.Combine(basePath, "Images");
+            var pathToSave = Path.Combine(Directory.GetCurrentDirectory(), uploadPath);
+            var fullPath = Path.Combine(pathToSave, file.FileName);
+            var dbPath = Path.Combine(uploadPath, file.FileName);
 
-            if (!Directory.Exists(uploadPath))
-            {
-                Directory.CreateDirectory(uploadPath);
-            }
+            //if (!Directory.Exists(uploadPath))
+            //{
+            //    Directory.CreateDirectory(uploadPath);
+            //}
 
             //C:\\ArchivosPrueba\uploads\archivo.txt
             var filePath = Path.Combine(uploadPath, file.FileName);
 
-            using (var fileStream = new FileStream(filePath, FileMode.Create))
+            using (var fileStream = new FileStream(fullPath, FileMode.Create))
             {
                 await file.CopyToAsync(fileStream);
             }
