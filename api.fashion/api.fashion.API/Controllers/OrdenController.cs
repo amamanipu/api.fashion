@@ -26,6 +26,7 @@ namespace api.fashion.API.Controllers
         [Route("insert")]
         public ActionResult Insert(EntityOrden orden)
         {
+            // hola este es mi codigo pero no salio en el github (nhidalgo)
             var identity = User.Identity as ClaimsIdentity;
             IEnumerable<Claim> claims = identity.Claims;
 
